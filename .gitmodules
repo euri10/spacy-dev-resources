@@ -1,0 +1,3 @@
+[submodule "wikijson"]
+	path = wikijson
+	url = git@github.com:andychisholm/wikijson.git
