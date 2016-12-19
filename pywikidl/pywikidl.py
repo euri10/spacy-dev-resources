@@ -31,14 +31,9 @@ def pywikidl(directory, language):
     print(all_links)
     for link in all_links:
         # https://dumps.wikimedia.org/frwiki/latest/frwiki-latest-pages-articles1.xml-p000000003p000412300.bz2
-        # pattern = language + "wiki-latest-pages-articles\d+.xml-p\d*p\d*.bz2$"
-        pattern = language + "wiki-latest-pages-articles\d+.xml-p\d*p\d*.bz2-rss.xml"
+        pattern = language + "wiki-latest-pages-articles\d+.xml-p\d*p\d*.bz2$"
         if re.match(pattern=pattern, string=link):
             url_dl = url + '/' + link
-            output = 'results/' + link
-            out_prefix= 'results/' + 'wiki_'+language +'/'
-            print(url_dl)
-            print(output)
             download_file(url_dl)
 
 if __name__ == '__main__':
