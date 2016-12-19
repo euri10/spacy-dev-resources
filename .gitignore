@@ -87,6 +87,6 @@ ENV/
 
 # Rope project settings
 .ropeproject
-/pywikidl/*.bz2
-/pywikidl/*.bz2-rss.xml
-
+/pywikidl/results/*.bz2
+.idea/
+pywikidl/output/
