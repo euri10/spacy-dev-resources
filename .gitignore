@@ -89,5 +89,5 @@ ENV/
 .ropeproject
 
 .idea/
-pywikidl/output/
 /pywikitools/dl_latest/*.bz2
+/pywikitools/extract_output/
