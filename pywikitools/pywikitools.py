@@ -28,6 +28,7 @@ WIKIDL_BASE = "https://dumps.wikimedia.org/"
 
 
 def download_file(url, directory):
+    """Utility function to save big files"""
     local_filename = urlparse(url).path.split('/')[-1]
     fn = os.path.join(directory, local_filename)
     # NOTE the stream=True parameter
@@ -45,12 +46,10 @@ def cli():
 
 
 @click.command()
-@click.option('--directory', default='dl_latest', type=click.Path(exists=True),
-              help='directory download output')
-@click.option('--language', default='en', prompt=True,
-              help='language you want to get')
+@click.option('--directory', default='dl_latest', type=click.Path(exists=True), help='directory download output, you need to create if it does not exist')
+@click.option('--language', default='en', prompt=True, help='language you want to get')
 def download(directory, language):
-    """Download wikipedia articles"""
+    """Download wikipedia articles in dl_latest folder, you need to create it"""
     base_lang = language + "wiki/latest"
     url = urljoin(WIKIDL_BASE, base_lang)
     page = requests.get(url)
@@ -78,6 +77,15 @@ DEFAULT_DICT_SIZE = 100000
 def extract(input_directory, output_directory, language, lemmatize, default_disk_size):
     filelist = os.listdir(input_directory)
     # used for quick debug, short bz2 extract
+    # create it like that :
+    # cp articles1 articles0
+    # vim articles0
+    # G to look for # of lines, ex 12 345 334
+    # got to about 10% of doc with 1 234 533gg
+    # find next </page> tag
+    # enter visual mode v, go to en G, go up one line k to keep wikimedia tag and D to delete
+    # wait, save :wq, wait, remove .un file that is big ! you now have a articles0.bz2 file that is big enough for testing but small
+    # enough to not last for hours
     filelist = ['/home/lotso/PycharmProjects/spacy-dev-resources/pywikitools/dl_latest/frwiki-latest-pages-articles0.xml-p000000003p000412300.bz2']
     for file in filelist:
         if os.path.exists(os.path.join(input_directory, file)):
