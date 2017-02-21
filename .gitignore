@@ -89,8 +89,8 @@ ENV/
 .ropeproject
 
 .idea/
-pywikidl/output/
 /pywikitools/dl_latest/frwiki-latest-pages-articles3.xml-p001647919p004419859.bz2
 /pywikitools/dl_latest/frwiki-latest-pages-articles1.xml-p000000003p000412300.bz2
 /pywikitools/dl_latest/frwiki-latest-pages-articles4.xml-p004419860p010476133.bz2
 /pywikitools/dl_latest/frwiki-latest-pages-articles2.xml-p000412304p001647873.bz2
+/pywikitools/extract_output/
